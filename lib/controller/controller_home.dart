@@ -13,6 +13,7 @@ class CtrlHome extends GetxController {
   int delai = 10;
   int timeOut = 5000;
   List<Resultat> list = [];
+  List<Resultat> list2 = [];
 
   int counter = 0;
   final startTime = DateTime.now();
@@ -44,6 +45,7 @@ class CtrlHome extends GetxController {
       item.delai = endTime.difference(startTime).inMilliseconds;
       item.status = "1";
       list.add(item);
+      list2 = list.reversed.toList();
       update();
 
       return response.data;
@@ -54,6 +56,7 @@ class CtrlHome extends GetxController {
       item.delai = endTime.difference(startTime).inMilliseconds;
       item.status = "0";
       list.add(item);
+      list2 = list.reversed.toList();
       update();
 
       NotificationServices()

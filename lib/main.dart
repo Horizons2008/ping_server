@@ -20,7 +20,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
@@ -48,7 +48,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     CtrlHome ctrlHome = Get.put(CtrlHome());
     Timer.periodic(Duration(seconds: ctrlHome.delai), (timer) {
-      print("timer ${timer.toString()}");
       ctrlHome.fetchData();
     });
     return Scaffold(
@@ -93,8 +92,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                               ElevatedButton(
                                   onPressed: () {
-                                    print(contUrl.text);
-
+                                    Get.back();
+                                 
                                     //   timeOut = int.parse(contTimeOut.text);
                                     newUrl = "https:\\${newUrl}";
                                     newUrl = newUrl.replaceAll(r"\", r"\\");
@@ -122,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Text(ctrlHome.url),
               Expanded(
                   child: ListView.builder(
-                itemCount: val1.list.length,
+                itemCount: val1.list2.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Container(
                     margin: EdgeInsets.symmetric(vertical: 10),
@@ -131,13 +130,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("# ${val1.list[index].id}"),
-                        Text("url: ${val1.list[index].url}"),
-                        Text("date:  ${val1.list[index].date}"),
+                        Text("# ${val1.list2[index].id}"),
+                        Text("url: ${val1.list2[index].url}"),
+                        Text("date:  ${val1.list2[index].date}"),
                         Text(
-                          "status ${val1.list[index].status}",
+                          "status ${val1.list2[index].status}",
                           style: TextStyle(
-                              color: val1.list[index].status == "1"
+                              color: val1.list2[index].status == "1"
                                   ? Colors.green
                                   : Colors.red),
                         ),
